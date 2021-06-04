@@ -789,7 +789,7 @@ class ScoreTiler(GridTiler):
 
         if thumbnail_path is not None:
             img = slide.scaled_image(scale_factor)
-            img.putalpha(alpha)
+            #img.putalpha(alpha)
             draw = PIL.ImageDraw.Draw(img)
         
         
@@ -820,7 +820,7 @@ class ScoreTiler(GridTiler):
             )
 
         if thumbnail_path is not None:
-            img.save(thumbnail_path)
+            img.save(thumbnail_path, 'JPEG')
 
         logger.info(f"{tiles_counter+1} Grid Tiles have been saved.")
 
