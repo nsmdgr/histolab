@@ -808,7 +808,7 @@ class ScoreTiler(GridTiler):
             
             tile = slide.extract_tile(tile_wsi_coords, self.level, self.tile_size)
             tile_filename = self._tile_filename(tile_wsi_coords, tiles_counter)
-            tile.save(os.path.join(slide.processed_path, tile_filename), 'JPEG')
+            tile.convert('RGB').save(os.path.join(slide.processed_path, tile_filename), 'JPEG')
             filenames.append(tile_filename)
             logger.info(
                 f"\t Tile {tiles_counter} - score: {score} saved: {tile_filename}"
@@ -820,7 +820,7 @@ class ScoreTiler(GridTiler):
             )
 
         if thumbnail_path is not None:
-            img.save(thumbnail_path, 'JPEG')
+            img.convert('RGB').save(thumbnail_path, 'JPEG')
 
         logger.info(f"{tiles_counter+1} Grid Tiles have been saved.")
 
